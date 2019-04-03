@@ -37,7 +37,7 @@ RUN apk --update --no-cache add \
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     mkdir -p /run/nginx
 
-
+COPy ./php.ini /etc/php5/conf.d/php.ini
 COPY ./init.sh /
 COPY ./default.conf /etc/nginx/conf.d/default.conf
 RUN chmod +x /init.sh
