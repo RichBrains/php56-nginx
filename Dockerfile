@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.5
 
 RUN apk --update --no-cache add \
         php5 \
@@ -24,6 +24,7 @@ RUN apk --update --no-cache add \
         php5-xml \
 	php5-zip \
 	php5-zlib \
+        php5-mysql \
     && rm -rf /var/cache/apk/*
 
 RUN apk --update --no-cache add \
@@ -33,8 +34,7 @@ RUN apk --update --no-cache add \
 && rm -rf /var/cache/apk/*
 
 
-RUN ln -s /usr/bin/php5 /usr/bin/php && \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     mkdir -p /run/nginx
 
 
