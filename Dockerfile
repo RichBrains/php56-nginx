@@ -34,6 +34,13 @@ RUN apk --update --no-cache add \
 && rm -rf /var/cache/apk/*
 
 
+RUN apk --no-cache add ca-certificates wget
+RUN wget --quiet --output-document=/etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
+RUN wget https://github.com/sgerrand/alpine-pkg-php5-redis/releases/download/3.1.6-r0/php5-redis-3.1.6-r0.apk
+RUN apk add php5-redis-3.1.6-r0.apk
+
+
+
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
     mkdir -p /run/nginx
 
