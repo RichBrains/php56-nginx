@@ -47,6 +47,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 COPy ./php.ini /etc/php5/conf.d/php.ini
 COPY ./init.sh /
 COPY ./default.conf /etc/nginx/conf.d/default.conf
+COPY ./www.conf /etc/php5/fpm.d/www.conf
 RUN chmod +x /init.sh
 
 EXPOSE 80
